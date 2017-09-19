@@ -80,14 +80,14 @@ Next I combined the above thresholding techniques into a single binary image.
 
 ![alt text][image6]
 
-Next I wanted to explore thresholding in the color space. I found that by thresholding in the HLS and the HSV color space I was able to single out the yellow and white lane line pixles. 
+Next I wanted to explore thresholding in the color space. I found that by thresholding in the HLS and the HSV color space I was able to single out the yellow and white lane line pixels. 
 
 ![alt text][image7]
 
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-Next I transformed the undistorted binary image into a "birds eye view" of the road, such that it only focuses on the lane lines so that the lines apper as you are looking down from above. I used the function to achive such a perspective transform `cv2.getPerspectiveTransform(src,dst)` and the function `cv2.getPerspectiveTransform(dst,src)`
+Next I transformed the undistorted binary image into a "bird'ss eye view" of the road, such that it only focuses on the lane lines so that the lines appear as you are looking down from above. I used the function to achieve such a perspective transform `cv2.getPerspectiveTransform(src,dst)` and the function `cv2.getPerspectiveTransform(dst,src)`
 to get the inverse of the transform.
 
 The following source and destination points were used:
@@ -103,11 +103,11 @@ The following source and destination points were used:
 
 #### 4 and 5. Describe how you identified lane-line pixels and fit their positions with a polynomial:
 
-Next I identified where in the perspective transformed binary image that the lane line pixles were located by taking a histogram of the pixels in the image. 
+Next I identified where in the perspective transformed binary image that the lane line pixels were located by taking a histogram of the pixels in the image. 
 
 ![alt text][image9]
 
-First I identified where the lane line pixles where by looking at the historgam to show an approximate area to look for lane lines in the image. I was able to identigy all non zero pixels around the histogram peaks using the numpy function  `numpy.nonzero()`. Next I fit a plynomial to each lane using the numpy function `numpy.polyfit()`
+First I identified where the lane line pixels where by looking at the histogram to show an approximate area to look for lane lines in the image. I was able to identify all non zero pixels around the histogram peaks using the numpy function  `numpy.nonzero()`. Next I fit a polynomial to each lane using the numpy function `numpy.polyfit()`
 
 Next I performed a sliding window search to find the most likely positions of the 2 lane lines. 
 
@@ -117,10 +117,10 @@ Next I performed a sliding window search to find the most likely positions of th
 
 #### 5. Describe how you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-Next I was able to calculate the position of the vehicle with respect to center and the radius of curvature for each lane line in meters with the folowing calculations:
-    `left_radius = ((1 + (2*left_fit_curve[0]*y_eval*ym_per_pix + left_fit_curve[1])**2)**1.5) / np.absolute(2*left_fit_curve[0])`
-    `right_radius = ((1 + (2*right_fit_curve[0]*y_eval*ym_per_pix + right_fit_curve[1])**2)**1.5) / np.absolute(2*right_fit_curve[0])`
-    `dist_from_cent = np.abs(center_idx - identified_lanes_center_idx)*xm_per_pix`
+Next I was able to calculate the position of the vehicle with respect to center and the radius of curvature for each lane line in meters with the following calculations:
+    * `left_radius = ((1 + (2*left_fit_curve[0]*y_eval*ym_per_pix + left_fit_curve[1])**2)**1.5) / np.absolute(2*left_fit_curve[0])`
+    * `right_radius = ((1 + (2*right_fit_curve[0]*y_eval*ym_per_pix + right_fit_curve[1])**2)**1.5) / np.absolute(2*right_fit_curve[0])`
+    * `dist_from_cent = np.abs(center_idx - identified_lanes_center_idx)*xm_per_pix`
 
 ![alt text][image12]
 
@@ -131,12 +131,11 @@ Next I was able to calculate the position of the vehicle with respect to center 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
 Here's a [link to my video result](https://youtu.be/keLANCTYkj4)
-![alt text][video14]
+
+or see the project_video_output.mp4 in this repository. 
 
 ---
 
 ### Discussion
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+This was a much more robust way of finding lane lines. I would really like to see such techniques applied to deep learning. 
