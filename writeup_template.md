@@ -22,21 +22,21 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_images/orig_distorted_img.png "Undistorted"
 [image2]: ./output_images/undistort_road_img_sample.png "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video.mp4 "Video"
+[image3]: ./output_images/sobel_road_img_harder_sample.png "Sobel Example"
+[image4]: ./output_images/mag_road_img_sample.png "Mag Example"
+[image5]: ./output_images/dir_road_img_sample_kernel3.png "Dir Example"
+[image6]: ./output_images/combined_road_img_sample_.png "Combined Example"
+[image7]: ./output_images/combined_color_road_img_sample_.png "Combined with color Example"
+[image44]: ./examples/warped_straight_lines.jpg "Warp Example"
+[image54]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image64]: ./examples/example_output.jpg "Output"
+[video14]: ./project_video.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
-
-### Writeup / README
-
-You're reading it!
 
 ### Camera Calibration
 
@@ -60,9 +60,28 @@ I next use the camera calibration matrix to test and undistort on sample road im
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+I used a combination of color and gradient thresholds to generate a binary image. The code for this step is contained in the Pipeline Helper Functions code cells of the IPython notebook located in "advanced-lane-finding-pipeline.ipynb". Here's an example of my output for this step.
+
+First I explored x and y orientation for Sobel thresholding. See below for an example image:
 
 ![alt text][image3]
+
+Next I explored magnitude of the gradient thresholding. See below for an example image:
+
+![alt text][image4]
+
+Next I explored direction of the gradient thresholding. See below for an example image:
+
+![alt text][image5]
+
+Next I combined the above thresholding techniques into a single binary image.
+
+![alt text][image6]
+
+Next I wanted to explore thresholding in the color space. I found that by thresholding in the HLS and the HSV color space I was able to single out the yellow and white lane line pixles. 
+
+![alt text][image7]
+
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
