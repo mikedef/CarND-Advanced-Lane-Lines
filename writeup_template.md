@@ -29,6 +29,9 @@ The goals / steps of this project are the following:
 [image7]: ./output_images/combined_color_road_img_sample_.png "Combined with color Example"
 [image8]: ./output_images/perspective_transform_road_img_sample_.png "perspective transform Example"
 [image9]: ./output_images/histogram_road_img_sample_.png "Hist of lane line pixles"
+[image10]: ./output_images/slidingWinddow.png "sliding Hist of lane line pixles"
+[image11]: ./output_images/FittedLaneLines.png "slidings Hist of lane line pixles"
+[image12]: ./output_images/curve_fitting_road_img_sample_.png "curve fitting"
 [image64]: ./examples/example_output.jpg "Output"
 [video14]: ./project_video.mp4 "Video"
 
@@ -99,23 +102,28 @@ The following source and destination points were used:
 
 ![alt text][image8]
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### 4 and 5. Describe how you identified lane-line pixels and fit their positions with a polynomial:
 
 Next I identified where in the perspective transformed binary image that the lane line pixles were located by taking a histogram of the pixels in the image. 
 
 ![alt text][image9]
 
-First I identified where the lane line pixles where by looking at the historgam to show an approximate area to look for lane lines in the image. Next I performed a sliding window search to find the most likely positions of the 2 lane lines. 
+First I identified where the lane line pixles where by looking at the historgam to show an approximate area to look for lane lines in the image. I was able to identigy all non zero pixels around the histogram peaks using the numpy function  `numpy.nonzero()`. Next I fit a plynomial to each lane using the numpy function `numpy.polyfit()`
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+Next I performed a sliding window search to find the most likely positions of the 2 lane lines. 
 
-I did this in lines # through # in my code in `my_other_file.py`
+![alt text][image10]
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+![alt text][image11]
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+#### 5. Describe how you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-![alt text][image6]
+Next I was able to calculate the position of the vehicle with respect to center and the radius of curvature for each lane line in meters with the folowing calculations:
+    `left_radius = ((1 + (2*left_fit_curve[0]*y_eval*ym_per_pix + left_fit_curve[1])**2)**1.5) / np.absolute(2*left_fit_curve[0])`
+    `right_radius = ((1 + (2*right_fit_curve[0]*y_eval*ym_per_pix + right_fit_curve[1])**2)**1.5) / np.absolute(2*right_fit_curve[0])`
+    `dist_from_cent = np.abs(center_idx - identified_lanes_center_idx)*xm_per_pix`
+
+![alt text][image12]
 
 ---
 
@@ -123,7 +131,7 @@ I implemented this step in lines # through # in my code in `yet_another_file.py`
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./project_video_output.mp4)
 
 ---
 
