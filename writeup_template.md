@@ -32,8 +32,7 @@ The goals / steps of this project are the following:
 [image10]: ./output_images/slidingWinddow.png "sliding Hist of lane line pixles"
 [image11]: ./output_images/FittedLaneLines.png "slidings Hist of lane line pixles"
 [image12]: ./output_images/curve_fitting_road_img_sample_.png "curve fitting"
-[image64]: ./examples/example_output.jpg "Output"
-[video14]: ./project_video.mp4 "Video"
+[video14]: ./project_video_output.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -131,7 +130,8 @@ Next I was able to calculate the position of the vehicle with respect to center 
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./project_video_output.mp4)
+Here's a [link to my video result](https://youtu.be/keLANCTYkj4)
+![alt text][video14]
 
 ---
 
