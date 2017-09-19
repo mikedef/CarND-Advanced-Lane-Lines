@@ -28,7 +28,7 @@ The goals / steps of this project are the following:
 [image6]: ./output_images/combined_road_img_sample_.png "Combined Example"
 [image7]: ./output_images/combined_color_road_img_sample_.png "Combined with color Example"
 [image8]: ./output_images/perspective_transform_road_img_sample_.png "perspective transform Example"
-[image54]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image9]: ./output_images/histogram_road_img_sample_.png "Hist of lane line pixles"
 [image64]: ./examples/example_output.jpg "Output"
 [video14]: ./project_video.mp4 "Video"
 
@@ -101,9 +101,11 @@ The following source and destination points were used:
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Next I identified where in the perspective transformed binary image that the lane line pixles were located by taking a histogram of the pixels in the image. 
 
-![alt text][image5]
+![alt text][image9]
+
+First I identified where the lane line pixles where by looking at the historgam to show an approximate area to look for lane lines in the image. Next I performed a sliding window search to find the most likely positions of the 2 lane lines. 
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
