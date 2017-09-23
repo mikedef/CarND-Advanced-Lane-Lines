@@ -139,3 +139,4 @@ or see the project_video_output.mp4 in this repository.
 ### Discussion
 
 This was a much more robust way of finding lane lines. I would really like to see such techniques applied to deep learning. 
+https://github.com/tiimgreen/github-cheat-sheet#imagesgifs
